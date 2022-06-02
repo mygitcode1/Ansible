@@ -1,0 +1,28 @@
+To use ansible commands, The remote node should have python installed.
+Multiple hosts/Inventorys
+ansible -i beta/hosts -i alpha/hosts all_servers -m ping
+ansible -i beta/hosts -i alpha/hosts all_servers -a free
+ansible -i beta/hosts -i alpha/hosts all_servers -a 'cat /etc/passwd'
+
+Used to execute one task.
+#ansible all -m ping
+#ansible all -m shell -a "cmd1;cmd2;cmd3"
+#ansible  all -m ping --list-hosts
+
+Use a copy module to copy files/data from Ansible Engine to Nodes.
+#ansible all -m copy -a "src=source/path dest=dest/path mode='0755' "
+[Here directory structure will also be created in the destination]
+
+#ansible all -m copy -a "src=source/path dest=dest/path mode='0755'  flat=yes"
+[Here directory structure will not be created in the destination]
+
+#ansible all -m file -a "content=text data in a file dest=/tmp/testfile.txt"
+[Creating a file directly with some content]
+
+#ansible all -m file -a "path=path/of/file  state=touch  mode='0755' "
+#ansible all -m file -a "path=path/of/file  state=directory  mode='0755' "
+#ansible all -m file -a "path=path/of/file  state=absent"
+
+Use fetch module to copy file/data from node to ansible Engine
+#ansible all -m fetch -a "src=source/path  dest=/tmp/in/master/server flat=yes "
+#ansible all -m fetch -a "src=source/path  dest=/tmp/{{inventory_hostname}}_file.txt flat=yes "
