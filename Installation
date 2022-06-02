@@ -40,3 +40,20 @@ Order of ansible config file look by controller as precedence
 * ansible.cfg (in the current directory)
 * .ansible.cfg (in the home directory)
 * /etc/ansible/ansible.cfg
+
+Uncomment and disable host-key checking in config file.
+Create a user ansadmin and provide sudo access
+# sudo adduser username
+#visudo
+Give sudo access to user.
+Similarly create an ansadmin user and give sudo access in remote nodes as well
+
+Switch as ansadmin user and generate ssh key in ansible controller
+#ssh-keygen
+Copy the public key into ansadmin users home dir of remote nodes
+#ssh-copy-id ansadmin@remote_nodes
+So, that passwordless authentication is established.
+
+
+Find all required modules 
+https://docs.ansible.com/ansible/2.9/modules/user_module.html#user-module
