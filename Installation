@@ -1,0 +1,42 @@
+$ sudo apt update
+$ sudo apt install software-properties-common
+$ sudo add-apt-repository --yes --update ppa:ansible/ansible
+$ sudo apt install ansible
+
+root@ip-172-16-1-126:~# ansible --version
+ansible [core 2.12.6]
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = ['/root/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  ansible collection location = /root/.ansible/collections:/usr/share/ansible/collections
+  executable location = /usr/bin/ansible
+  python version = 3.8.10 (default, Mar 15 2022, 12:22:08) [GCC 9.4.0]
+  jinja version = 2.10.1
+  libyaml = True
+root@ip-172-16-1-126:~#
+
+root@ip-172-16-1-126:~# cat /etc/ansible/ansible.cfg
+# Since Ansible 2.12 (core):
+# To generate an example config file (a "disabled" one with all default settings                                                      , commented out):
+#               $ ansible-config init --disabled > ansible.cfg
+#
+# Also you can now have a more complete file by including existing plugins:
+# ansible-config init --disabled -t all > ansible.cfg
+
+# For previous versions of Ansible you can check for examples in the 'stable' br                                                      anches of each version
+# Note that this file was always incomplete  and lagging changes to configuratio                                                      n settings
+
+# for example, for 2.9: https://github.com/ansible/ansible/blob/stable-2.9/examp                                                      les/ansible.cfg
+root@ip-172-16-1-126:~#
+
+
+Initialize ansible config file
+ansible-config init --disabled > ansible.cfg
+
+We can keep/use multiple ansible files each for a project or group.
+
+Order of ansible config file look by controller as precedence
+* ANSIBLE_CONFIG (an environment variable)
+* ansible.cfg (in the current directory)
+* .ansible.cfg (in the home directory)
+* /etc/ansible/ansible.cfg
