@@ -1,0 +1,19 @@
+---
+- name: Scalar kind of variables demo
+  hosts: all
+  gather_facts: no
+  become: yes
+  vars:
+    x: 245
+    y: 234.468
+    z: "Bhanu Chadar"
+    my_bol: True
+    my_bol1: False
+  tasks:
+    - debug:
+       msg: 
+        - "X value is : {{x}} and type is: {{x|type_debug}}"
+        - "y value is : {{y}} and type is: {{y|type_debug}}"
+        - "z value is : {{z}} and type is: {{z|type_debug}}"
+        - "my_bol value is : {{my_bol}} and type is: {{my_bol|type_debug}}"
+        - "my_bol1 value is : {{my_bol1}} and type is: {{my_bol1|type_debug}}"

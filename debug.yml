@@ -1,0 +1,17 @@
+---
+ - name: debug module message printing
+   hosts: web
+   gather_facts: no
+   become: yes
+   tasks:
+   - name: print message using debug
+     debug: msg="Welcome to Ansible play-books"
+   - name: Second method to print message
+     debug:
+      msg: "The hostname is: {{inventory_hostname}}"
+   - name: Write multiple message statements
+     debug:
+      msg:
+       - "My message-1"
+       - "My message-2"
+       - "My message-3"

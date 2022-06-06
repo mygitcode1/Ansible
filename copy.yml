@@ -1,0 +1,10 @@
+---
+ - name: This is a simple playbook 
+   hosts: web
+   gather_facts: false
+   become: yes
+   tasks:
+   - name: copying a file 
+     copy: src=web.xml dest=/opt/
+   - name: Create a file
+     file: path=/opt/test_file1 state=touch

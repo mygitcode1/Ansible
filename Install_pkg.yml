@@ -1,0 +1,17 @@
+---
+ - name: Welcome to my basic playbook - Installing wget
+   hosts: web
+   become: yes
+   gather_facts: false
+   tasks:
+   - apt: name=wget state=present
+ - name: Welcome to my basic playbook - Installing Nginx
+   hosts: app
+   become: yes
+   gather_facts: false
+   tasks:
+   - apt: name=nginx state=latest
+# This play-book has 2 plays
+# Task + Targets = Play
+# Collections of plays is a playbook
+

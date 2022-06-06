@@ -1,0 +1,13 @@
+---
+ - name: Sequence or list demo
+   hosts: all
+   gather_facts: False
+   become: yes
+   vars:
+    pkgs: ['nginx', 'httpd', 'vim', 'wget']
+   tasks:
+    - name: Calling variables one by one
+      debug:
+       msg: var={{pkgs}}
+    - name: Installing defined packages
+      apt: name={{pkgs}} state=present
